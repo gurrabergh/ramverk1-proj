@@ -51,7 +51,7 @@ class Navbar
      *
      * @param: string $url where to create the url.
      *
-     * @return string as the url create.
+     * @return bool as the url create.
      */
     public function isParent($parent)
     {

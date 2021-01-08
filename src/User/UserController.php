@@ -63,6 +63,7 @@ class UserController implements ContainerInjectableInterface
             $response = $this->di->get("response");
 
             $response->redirect("user/profile");
+            return null;
         }
         $page = $this->di->get("page");
         $form = new UserLoginForm($this->di);
@@ -122,7 +123,7 @@ class UserController implements ContainerInjectableInterface
         ]);
     }
 
-    public function logoutAction() : object
+    public function logoutAction()
     {
 
         $session = $this->di->get("session");
@@ -131,5 +132,6 @@ class UserController implements ContainerInjectableInterface
         $response = $this->di->get("response");
 
         $response->redirect("user/login");
+        return null;
     }
 }
