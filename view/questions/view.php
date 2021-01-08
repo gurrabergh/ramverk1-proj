@@ -22,7 +22,7 @@ endif;
     <input type="hidden" value="questions" name="type">
     <?= $question->rating ?>
     <button type="submit" value="down" name="action" <?= $vote ?>> &darr;</button></form></strong> </h2>
-<p><?= $question->content ?></p>
+<p><?= $question->content->text ?></p>
 <br>
 </ul>
 <form method="post" action="<?= url("questions/answer") ?>">
@@ -74,7 +74,7 @@ endif; ?>
         <input type="hidden" value="answers" name="type">
         <?= $answer->rating ?>
         <button type="submit" value="down" name="action" <?= $voteA ?>> &darr;</button></form></small></h3>
-        <p><?= $answer->content ?></p>
+        <p><?= $answer->content->text ?></p>
         <form action="accept" method="post"><button <?= $acceptBtn ?>>Acceptera svar</button>
         <input type="hidden" value="<?= $answer->id ?>" name="aid">
         <input type="hidden" value="<?= $question->id ?>" name="qid">
@@ -98,7 +98,7 @@ endif; ?>
             <input type="hidden" value="comments" name="type">
             <?= $comment->rating ?>
             <button type="submit" value="down" name="action" <?= $voteC ?>> &darr;</button></form></small></h4>
-            <p><?= $comment->content ?></p>
+            <p><?= $comment->content->text ?></p>
             </li>
         <?php endif; ?>
     <?php } ?>

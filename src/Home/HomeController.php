@@ -55,12 +55,11 @@ class HomeController implements ContainerInjectableInterface
         $title = "Start";
         $userDB = new UserData();
         $userDB->di = $this->di;
+        $data = array();
         $data["users"] = $userDB->getTopProfiles();
-
         $questionManager = new QM();
         $questionManager->di = $this->di;
         $data["questions"] = $questionManager->getLatestQuestions();
-
         $tagManager = new TM();
         $tagManager->di = $this->di;
         $data["tags"] = $tagManager->getTopTags();

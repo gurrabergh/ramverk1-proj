@@ -36,7 +36,7 @@ class QM
         $res = $db->executeFetch($sql, [$id]);
         $textFilter = new TextFilter();
 
-        $res->content = $textFilter->doFilter($res->content, ["markdown"]);
+        $res->content = $textFilter->parse($res->content, ["markdown"]);
 
 
         return $res;
@@ -86,7 +86,7 @@ class QM
         $res = $db->executeFetchAll($sql, [$id]);
         $textFilter = new TextFilter();
         foreach ($res as $row) {
-            $row->content = $textFilter->doFilter($row->content, ["markdown"]);
+            $row->content = $textFilter->parse($row->content, ["markdown"]);
         }
 
         return $res;
@@ -100,7 +100,7 @@ class QM
         $res = $db->executeFetchAll($sql, [$id]);
         $textFilter = new TextFilter();
         foreach ($res as $row) {
-            $row->content = $textFilter->doFilter($row->content, ["markdown"]);
+            $row->content = $textFilter->parse($row->content, ["markdown"]);
         }
 
         return $res;
@@ -141,12 +141,12 @@ class QM
         $sql = "UPDATE answers SET accepted = 1 WHERE id = ?;";
         $db = $this->di->get("dbqb");
         $db->connect();
-        $res = $db->executeFetch($sql, [$id]);
+        $db->executeFetch($sql, [$id]);
 
         $sql = "UPDATE questions SET solved = 1 WHERE id = ?;";
         $db = $this->di->get("dbqb");
         $db->connect();
-        $res = $db->executeFetch($sql, [$qid]);
+        $db->executeFetch($sql, [$qid]);
 
         return;
     }

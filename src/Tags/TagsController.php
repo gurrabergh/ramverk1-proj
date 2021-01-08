@@ -53,7 +53,7 @@ class TagsController implements ContainerInjectableInterface
         $title = "Taggar";
         $tagManager = new TM();
         $tagManager->di = $this->di;
-
+        $data = array();
         $data["tags"] = $tagManager->getTags();
         $page = $this->di->get("page");
         $page->add('tags/index', $data);
@@ -70,6 +70,7 @@ class TagsController implements ContainerInjectableInterface
         $tagManager = new TM();
         $tagManager->di = $this->di;
         $tag = htmlEntities($request->getGet("tag"), ENT_QUOTES);
+        $data = array();
         $data["questions"] = $tagManager->getQuestions($tag);
         $data["tag"] = $tag;
         $page = $this->di->get("page");

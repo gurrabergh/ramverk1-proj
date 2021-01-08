@@ -81,7 +81,6 @@ class UpdateUserForm extends FormModel
         $db = $this->di->get("dbqb");
         $password = password_hash($password, PASSWORD_DEFAULT);
         $sql = "UPDATE users SET password = ?, bio = ?  WHERE nick = ?;";
-        $db = $this->di->get("db");
         $db->connect();
         $db->execute($sql, [$password, $bio, $nick]);
         $response = $this->di->get("response");

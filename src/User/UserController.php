@@ -26,7 +26,7 @@ class UserController implements ContainerInjectableInterface
         $title = "Start";
         $useranagerM = new UserData();
         $useranagerM->di = $this->di;
-
+        $data = array();
         $data["users"] = $useranagerM->getUsers();
         $page = $this->di->get("page");
         $page->add('user/all', $data);
@@ -45,6 +45,7 @@ class UserController implements ContainerInjectableInterface
         $questionManager = new QM();
         $userDB->di = $this->di;
         $questionManager->di = $this->di;
+        $data = array();
         $data["user"] = $userDB->getUser($nick);
         $data["questions"] = $questionManager->getUserQuestions($nick);
         $data["answers"] = $questionManager->getUserAnswers($nick);
@@ -56,7 +57,7 @@ class UserController implements ContainerInjectableInterface
         ]);
     }
 
-    public function loginAction() : object
+    public function loginAction()
     {
         $session = $this->di->get("session");
         if ($session->has("user")) {

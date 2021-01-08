@@ -55,7 +55,7 @@ class QuestionsController implements ContainerInjectableInterface
         $title = "Start";
         $questionManager = new QM();
         $questionManager->di = $this->di;
-
+        $data = array();
         $data["questions"] = $questionManager->getQuestions();
         $page = $this->di->get("page");
         $page->add('questions/index', $data);
@@ -90,6 +90,7 @@ class QuestionsController implements ContainerInjectableInterface
         $order = htmlEntities($request->getGet("order", "rating"), ENT_QUOTES);
         $session = $this->di->get("session");
         $user = $session->get("nick");
+        $data = array();
         $data["order"] = $order;
         $data["question"] = $questionManager->getQuestion($id);
         $data["answers"] = $questionManager->getAnswers($id, $order);
