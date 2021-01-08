@@ -21,8 +21,6 @@ class UserController implements ContainerInjectableInterface
 {
     use ContainerInjectableTrait;
 
-
-
     public function allActionGet() : object
     {
         $title = "Start";
@@ -58,15 +56,6 @@ class UserController implements ContainerInjectableInterface
         ]);
     }
 
-    /**
-     * Description.
-     *
-     * @param datatype $variable Description
-     *
-     * @throws Exception
-     *
-     * @return object as a response object
-     */
     public function loginAction() : object
     {
         $session = $this->di->get("session");
@@ -88,17 +77,6 @@ class UserController implements ContainerInjectableInterface
         ]);
     }
 
-
-
-    /**
-     * Description.
-     *
-     * @param datatype $variable Description
-     *
-     * @throws Exception
-     *
-     * @return object as a response object
-     */
     public function createAction() : object
     {
         $page = $this->di->get("page");

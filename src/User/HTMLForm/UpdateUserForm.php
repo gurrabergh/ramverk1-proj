@@ -11,11 +11,6 @@ use Anax\User\UserData;
  */
 class UpdateUserForm extends FormModel
 {
-    /**
-     * Constructor injects with DI container.
-     *
-     * @param Psr\Container\ContainerInterface $di a service container
-     */
     public function __construct(ContainerInterface $di)
     {
         parent::__construct($di);
