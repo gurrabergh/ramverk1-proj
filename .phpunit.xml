@@ -10,7 +10,12 @@
 
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">src</directory>
+            <directory suffix=".php">src/Questions/QM.php</directory>
+            <directory suffix=".php">src/Questions/QuestionsController.php</directory>
+            <directory suffix=".php">src/Home</directory>
+            <directory suffix=".php">src/Tags</directory>
+            <directory suffix=".php">src/User/UserData.php</directory>
+            <directory suffix=".php">src/User/UserController.php</directory>
         </whitelist>
     </filter>
 
@@ -18,5 +23,4 @@
         <log type="coverage-html" target="build/coverage" lowUpperBound="35" highLowerBound="70" />
         <log type="coverage-clover" target="build/coverage.clover" />
    </logging>
-
 </phpunit>

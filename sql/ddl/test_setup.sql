@@ -40,6 +40,9 @@ CREATE TABLE questions (
     "tags" TEXT
 );
 
+INSERT INTO questions (content, author, title)
+VALUES ("test", ("test"), "test");
+
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
     "id" INTEGER PRIMARY KEY NOT NULL,

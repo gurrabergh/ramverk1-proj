@@ -57,15 +57,8 @@ class UserController implements ContainerInjectableInterface
         ]);
     }
 
-    public function loginAction() : ?object
+    public function loginAction() : object
     {
-        $session = $this->di->get("session");
-        if ($session->has("user")) {
-            $response = $this->di->get("response");
-
-            $response->redirect("user/profile");
-            return null;
-        }
         $page = $this->di->get("page");
         $form = new UserLoginForm($this->di);
         $form->check();
@@ -97,20 +90,14 @@ class UserController implements ContainerInjectableInterface
     public function profileAction() : object
     {
         $session = $this->di->get("session");
-        if (!($session->has("user"))) {
-            $response = $this->di->get("response");
-            $response->redirect("user/login");
-            return null;
-        }
         $page = $this->di->get("page");
         $userDB = new UserData();
         $userDB->di = $this->di;
-        $page->add("user/index", [
-            "user" => $userDB->getProfile($session->get("user")),
-        ]);
+        $data["user"] = $userDB->getProfile($session->get("user"));
+        $page->add("user/index", $data);
 
         return $page->render([
-            "title" => "Profil",
+            "title" => "Profil"
         ]);
     }
 
@@ -125,11 +112,11 @@ class UserController implements ContainerInjectableInterface
         ]);
 
         return $page->render([
-            "title" => "Redigera",
+            "title" => "Redigera"
         ]);
     }
 
-    public function logoutAction()
+    public function logoutActionGet() : bool
     {
 
         $session = $this->di->get("session");
@@ -138,6 +125,6 @@ class UserController implements ContainerInjectableInterface
         $response = $this->di->get("response");
 
         $response->redirect("user/login");
-        return null;
+        return true;
     }
 }

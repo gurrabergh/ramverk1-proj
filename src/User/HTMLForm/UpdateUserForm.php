@@ -86,5 +86,6 @@ class UpdateUserForm extends FormModel
         $response = $this->di->get("response");
 
         $response->redirect("user/profile");
+        return true;
     }
 }

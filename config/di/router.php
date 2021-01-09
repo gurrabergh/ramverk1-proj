@@ -23,6 +23,7 @@ return [
                 }
 
                 // Add routes from configuration file
+                $file = null;
                 try {
                     $file = $config["file"] ?? null;
                     $router->addRoutes($config["config"] ?? []);

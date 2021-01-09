@@ -74,9 +74,9 @@ class UserLoginForm extends FormModel
         $session = $this->di->get("session");
         $session->set("user", $acronym);
         $session->set("nick", $user->nick);
-
+        $_SESSION["logged"] = true;
         $response = $this->di->get("response");
-
         $response->redirect("user/profile");
+        return true;
     }
 }

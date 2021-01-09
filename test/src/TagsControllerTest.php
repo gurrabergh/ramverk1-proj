@@ -1,6 +1,6 @@
 <?php
 
-namespace Anax\Home;
+namespace Anax\Tags;
 
 use PHPUnit\Framework\TestCase;
 use Anax\DI\DIFactoryConfig;
@@ -9,7 +9,7 @@ use Anax\Response\ResponseUtility;
 /**
  * Example test class.
  */
-class HomeControllerTest extends TestCase
+class QuestionsControllerTest extends TestCase
 {
     private $controller;
     private $di;
@@ -31,7 +31,7 @@ class HomeControllerTest extends TestCase
         $di = $this->di;
 
         // Setup the controller
-        $this->controller = new HomeController();
+        $this->controller = new TagsController();
         $this->controller->setDI($this->di);
         $_SESSION["test"] = "test";
         //$this->controller->initialize();
@@ -44,6 +44,14 @@ class HomeControllerTest extends TestCase
     public function testIndexAction()
     {
         $res = $this->controller->indexAction();
+        $this->assertInstanceOf(ResponseUtility::class, $res);
+    }
+
+    public function testViewAction()
+    {
+        $request = $this->di->get("request");
+        $request->setGet("tag", "test");
+        $res = $this->controller->viewAction();
         $this->assertInstanceOf(ResponseUtility::class, $res);
     }
 }
