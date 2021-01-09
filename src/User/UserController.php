@@ -57,7 +57,7 @@ class UserController implements ContainerInjectableInterface
         ]);
     }
 
-    public function loginAction()
+    public function loginAction() : ?object
     {
         $session = $this->di->get("session");
         if ($session->has("user")) {
@@ -97,6 +97,11 @@ class UserController implements ContainerInjectableInterface
     public function profileAction() : object
     {
         $session = $this->di->get("session");
+        if (!($session->has("user"))) {
+            $response = $this->di->get("response");
+            $response->redirect("user/login");
+            return null;
+        }
         $page = $this->di->get("page");
         $userDB = new UserData();
         $userDB->di = $this->di;

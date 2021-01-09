@@ -1,11 +1,11 @@
 <?php
 /**
- * Load the ip controller.
+ * Load the user controller.
  */
 return [
     "routes" => [
         [
-            "info" => "users-controller.",
+            "info" => "user-controller.",
             "mount" => "user",
             "handler" => "\Anax\User\UserController",
         ],

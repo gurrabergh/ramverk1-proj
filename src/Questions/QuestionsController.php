@@ -135,7 +135,6 @@ class QuestionsController implements ContainerInjectableInterface
         $userData->changeRep(1, $user);
         $userData->castVote($user);
 
-        $page = $this->di->get("page");
         $response->redirect("questions/view?question={$qid}#{$type[0]}{$id}");
         return null;
     }

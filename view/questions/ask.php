@@ -25,4 +25,4 @@ if (isset($class)) {
 ?><article <?= classList($classes) ?>>
 <?= $content ?>
 </article>
-<a href="<?= url("user/create") ?>">Skapa profil</a>
+
