@@ -1,24 +1,8 @@
----
-views:
-    kursrepo:
-        region: sidebar-right
-        template: anax/v2/block/default
-        data:
-            meta: 
-                type: single
-                route: block/om-kursrepo
-
-    redovisa:
-        region: sidebar-right
-        template: anax/v2/block/default
-        data:
-            meta: 
-                type: single
-                route: block/om-redovisa
----
 Om
 =========================
 
-Denna sida är mitt arbete i kursen ramverk1. Det ska bli intressant att programmera i PHP igen, det var ett tag sedan sist.
+Detta är en webbplats skapad som examinerande projekt i kursen [ramverk1](https://dbwebb.se/kurser/ramverk1-v2/). Temat var "Allt om XXX" och jag valde att göra en StackOverflow-kopia med tema "allt om sengångare".
 
-[FIGURE src=image/php.png?w=800 caption="En PHP-elefant"]
+Jag har publicerat projektet på GitHub, det hittar du [här](https://github.com/gurrabergh/ramverk1-proj).
+
+Jag som gjort denna sida heter Gustav Berg och läser andra året på programmet "Webbprogrammering" vid BTH.
