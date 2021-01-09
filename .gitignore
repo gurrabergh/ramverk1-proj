@@ -4,4 +4,3 @@
 memory::
 composer.lock
 /data
-/config/database.php
