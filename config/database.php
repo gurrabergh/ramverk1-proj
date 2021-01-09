@@ -13,7 +13,6 @@
  *  "dsn" => "sqlite:$path",
  *
  */
-use Anax\DI\DIFactoryConfig;
 
 $name = $_SESSION["test"] ?? "";
 
@@ -42,7 +41,7 @@ if (isset($_SERVER["SERVER_NAME"]) && $_SERVER["SERVER_NAME"] === "www.student.b
     return [
         "dsn"             => "mysql:host=blu-ray.student.bth.se;dbname=gubg19;",
         "username"        => "gubg19",
-        "password"        => ANAX_INSTALL_PATH . "/data/DB_PSW",
+        "password"        =>  "",
         "driver_options"  => [
             \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"
         ],

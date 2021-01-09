@@ -10,12 +10,7 @@
 
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">src/Questions/QM.php</directory>
-            <directory suffix=".php">src/Questions/QuestionsController.php</directory>
-            <directory suffix=".php">src/Home</directory>
-            <directory suffix=".php">src/Tags</directory>
-            <directory suffix=".php">src/User/UserData.php</directory>
-            <directory suffix=".php">src/User/UserController.php</directory>
+            <directory suffix=".php">src</directory>
         </whitelist>
     </filter>
 
