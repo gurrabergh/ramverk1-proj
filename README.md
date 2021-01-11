@@ -4,6 +4,6 @@ Checkout and install
 =================
 
 1. Download this repo
-2. run ´make install´
-3. Configure ´config/database.php´ to match your own database.
-4. Use sql/ddl/ddl.sql to create the tabels required.
+2. run `make install`
+3. Configure `config/database.php` to match your own database.
+4. Use `sql/ddl/ddl.sql` to create the tabels required.
