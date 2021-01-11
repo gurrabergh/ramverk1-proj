@@ -13,7 +13,6 @@
  *  "dsn" => "sqlite:$path",
  *
  */
-$psw = file_get_contents(ANAX_INSTALL_PATH . "/data/DB_PSW");
 $name = $_SESSION["test"] ?? "";
 
 if ($name === "test") {
@@ -38,6 +37,7 @@ if ($name === "test") {
 }
 
 if (isset($_SERVER["SERVER_NAME"]) && $_SERVER["SERVER_NAME"] === "www.student.bth.se") {
+    $psw = file_get_contents(ANAX_INSTALL_PATH . "/data/DB_PSW");
     return [
         "dsn"             => "mysql:host=blu-ray.student.bth.se;dbname=gubg19;",
         "username"        => "gubg19",
