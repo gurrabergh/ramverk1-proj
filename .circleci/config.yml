@@ -34,10 +34,9 @@ jobs:
 
             - run: make check
             - run: make test
+            - run: phpdbg -qrr vendor/bin/phpunit --coverage-html build/coverage-report
             - store_artifacts:
-                path:  build/coverage
-- store_test_results:
-    path: test-results
+                path:  build/coverage-report
 
 
 
