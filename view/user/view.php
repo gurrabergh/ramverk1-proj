@@ -30,3 +30,4 @@ namespace Anax\View;
             </li>
 <?php } ?>
 </ul>
+<a href="<?= url("user/all") ?>">Se alla användare</a>

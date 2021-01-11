@@ -115,3 +115,4 @@ endif; ?>
 <?php if (count($answers) == 0) : ?>
     <p>Inga svar på denna fråga ännu..</p>
 <?php endif; ?>
+<a href="<?= url("questions") ?>">Se alla frågor</a>

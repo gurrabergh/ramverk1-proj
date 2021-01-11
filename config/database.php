@@ -59,7 +59,7 @@ if (isset($_SERVER["SERVER_NAME"]) && $_SERVER["SERVER_NAME"] === "www.student.b
 }
 
 return [
-    "dsn" => "sqlite:" . ANAX_INSTALL_PATH . "/db/test_db.sqlite",
+    "dsn" => "mysql:host=localhost;dbname=ramverk1;",
     "username"         => "user",
     "password"         => "pass",
     "driver_options"   => [
