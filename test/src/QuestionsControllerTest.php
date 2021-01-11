@@ -68,7 +68,7 @@ class QuestionsControllerTest extends TestCase
         $session = $this->di->get("session");
         $session->set("nick", "");
         $res = $this->controller->voteActionPost();
-        $this->assertEquals(true, $res);
+        $this->assertInstanceOf(ResponseUtility::class, $res);
     }
 
     public function testVoteAction()
@@ -85,10 +85,10 @@ class QuestionsControllerTest extends TestCase
             $request->setPost("action", "up");
             $session->set("nick", "test2");
             $res = $this->controller->voteActionPost();
-            $this->assertEquals(true, $res);
+            $this->assertInstanceOf(ResponseUtility::class, $res);
             $request->setPost("action", "down");
             $res = $this->controller->voteActionPost();
-            $this->assertEquals(true, $res);
+            $this->assertInstanceOf(ResponseUtility::class, $res);
         }
     }
 
@@ -98,7 +98,7 @@ class QuestionsControllerTest extends TestCase
         $session = $this->di->get("session");
         $session->set("nick", "");
         $res = $this->controller->answerActionPost();
-        $this->assertEquals(true, $res);
+        $this->assertInstanceOf(ResponseUtility::class, $res);
     }
 
     public function testAnswerAction()
@@ -109,27 +109,22 @@ class QuestionsControllerTest extends TestCase
         $request->setPost("content", "test");
         $session->set("nick", "test");
         $res = $this->controller->answerActionPost();
-        $this->assertEquals(true, $res);
-    }
-
-    public function testCommentActionFail()
-    {
-        $session = $this->di->get("session");
-        $session->set("nick", "");
-        $res = $this->controller->commentActionPost();
-        $this->assertEquals(true, $res);
+        $this->assertInstanceOf(ResponseUtility::class, $res);
     }
 
     public function testCommentAction()
     {
         $request = $this->di->get("request");
         $session = $this->di->get("session");
+        $session->set("nick", "");
+        $res = $this->controller->commentActionPost();
+        $this->assertInstanceOf(ResponseUtility::class, $res);
         $request->setPost("id", "1");
         $request->setPost("question", "1");
         $request->setPost("content", "test");
         $session->set("nick", "test");
         $res = $this->controller->commentActionPost();
-        $this->assertEquals(true, $res);
+        $this->assertInstanceOf(ResponseUtility::class, $res);
     }
 
     public function testAcceptActionFail()
@@ -137,7 +132,7 @@ class QuestionsControllerTest extends TestCase
         $session = $this->di->get("session");
         $session->set("nick", "");
         $res = $this->controller->acceptActionPost();
-        $this->assertEquals(true, $res);
+        $this->assertInstanceOf(ResponseUtility::class, $res);
     }
 
     public function testAcceptAction()
@@ -148,6 +143,6 @@ class QuestionsControllerTest extends TestCase
         $request->setPost("qid", "1");
         $session->set("nick", "test");
         $res = $this->controller->acceptActionPost();
-        $this->assertEquals(true, $res);
+        $this->assertInstanceOf(ResponseUtility::class, $res);
     }
 }

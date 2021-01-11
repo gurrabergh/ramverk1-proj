@@ -116,7 +116,7 @@ class UserController implements ContainerInjectableInterface
         ]);
     }
 
-    public function logoutActionGet() : bool
+    public function logoutActionGet() : object
     {
 
         $session = $this->di->get("session");
@@ -124,7 +124,6 @@ class UserController implements ContainerInjectableInterface
         $session->destroy();
         $response = $this->di->get("response");
 
-        $response->redirect("user/login");
-        return true;
+        return $response->redirect("user/login");
     }
 }

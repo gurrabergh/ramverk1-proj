@@ -105,14 +105,13 @@ class QuestionsController implements ContainerInjectableInterface
         ]);
     }
 
-    public function voteActionPost() : bool
+    public function voteActionPost() : object
     {
         $session = $this->di->get("session");
         $response = $this->di->get("response");
         $user = $session->get("nick");
         if (empty($user)) {
-            $response->redirect("user/login");
-            return true;
+            return $response->redirect("user/login");
         }
         $questionManager = new QM();
         $userData = new UserData;
@@ -135,18 +134,16 @@ class QuestionsController implements ContainerInjectableInterface
         $userData->changeRep(1, $user);
         $userData->castVote($user);
 
-        $response->redirect("questions/view?question={$qid}#{$type[0]}{$id}");
-        return true;
+        return $response->redirect("questions/view?question={$qid}#{$type[0]}{$id}");
     }
 
-    public function answerActionPost() : bool
+    public function answerActionPost() : object
     {
         $response = $this->di->get("response");
         $session = $this->di->get("session");
         $user = $session->get("nick");
         if (empty($user)) {
-            $response->redirect("user/login");
-            return true;
+            return $response->redirect("user/login");
         }
 
         $questionManager = new QM();
@@ -160,18 +157,16 @@ class QuestionsController implements ContainerInjectableInterface
         $last = $questionManager->answer($id, $user, $content);
         $userData->changeRep(1, $user);
 
-        $response->redirect("questions/view?question={$id}#a{$last}");
-        return true;
+        return $response->redirect("questions/view?question={$id}#a{$last}");
     }
 
-    public function commentActionPost() : bool
+    public function commentActionPost() : object
     {
         $response = $this->di->get("response");
         $session = $this->di->get("session");
         $user = $session->get("nick");
         if (empty($user)) {
-            $response->redirect("user/login");
-            return true;
+            return $response->redirect("user/login");
         }
 
         $questionManager = new QM();
@@ -186,18 +181,17 @@ class QuestionsController implements ContainerInjectableInterface
         $last = $questionManager->comment($id, $user, $content, $question);
         $userData->changeRep(1, $user);
 
-        $response->redirect("questions/view?question={$question}#c{$last}");
-        return true;
+        return $response->redirect("questions/view?question={$question}#c{$last}");
+        
     }
 
-    public function acceptActionPost() : bool
+    public function acceptActionPost() : object
     {
         $response = $this->di->get("response");
         $session = $this->di->get("session");
         $user = $session->get("nick");
         if (empty($user)) {
-            $response->redirect("user/login");
-            return true;
+            return $response->redirect("user/login");
         }
 
         $questionManager = new QM();
@@ -208,7 +202,7 @@ class QuestionsController implements ContainerInjectableInterface
 
         $questionManager->acceptAnswer($id, $question);
 
-        $response->redirect("questions/view?question={$question}#a{$id}");
-        return true;
+        return $response->redirect("questions/view?question={$question}#a{$id}");
+        
     }
 }

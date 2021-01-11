@@ -79,6 +79,6 @@ class UserControllerTest extends TestCase
     public function testLogoutAction()
     {
         $res = $this->controller->logoutActionGet();
-        $this->assertEquals(true, $res);
+        $this->assertInstanceOf(ResponseUtility::class, $res);
     }
 }
