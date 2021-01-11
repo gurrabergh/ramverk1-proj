@@ -13,7 +13,7 @@
  *  "dsn" => "sqlite:$path",
  *
  */
-$psw = file_get_contents("../data/DB_PSW");
+$psw = file_get_contents(ANAX_INSTALL_PATH . "data/DB_PSW");
 $name = $_SESSION["test"] ?? "";
 
 if ($name === "test") {
