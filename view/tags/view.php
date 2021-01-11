@@ -12,3 +12,4 @@ namespace Anax\View;
             </li>
 <?php } ?>
 </ul>
+<a href="<?= url("tags") ?>">Se alla taggar</a>

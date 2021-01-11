@@ -85,7 +85,6 @@ class UpdateUserForm extends FormModel
         $db->execute($sql, [$password, $bio, $nick]);
         $response = $this->di->get("response");
 
-        $response->redirect("user/profile");
-        return true;
+        return $response->redirect("user/profile");
     }
 }

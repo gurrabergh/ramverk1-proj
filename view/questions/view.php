@@ -23,6 +23,11 @@ endif;
     <?= $question->rating ?>
     <button type="submit" value="down" name="action" <?= $vote ?>> &darr;</button></form></strong> </h2>
 <p><?= $question->content->text ?></p>
+<p>
+<?php foreach ($question->tags as $tag) { ?>
+<small><a href="<?= url("tags/view?tag=") ?><?= $tag?>">#<?= $tag ?></a></small>
+    <?php } ?>
+    </p>
 <br>
 </ul>
 <form method="post" action="<?= url("questions/answer") ?>">

@@ -52,7 +52,7 @@ class QuestionsController implements ContainerInjectableInterface
     //  */
     public function indexAction() : object
     {
-        $title = "Start";
+        $title = "Frågor";
         $questionManager = new QM();
         $questionManager->di = $this->di;
         $data = array();

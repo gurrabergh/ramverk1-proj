@@ -78,7 +78,6 @@ class CreateUserForm extends FormModel
 
         $response = $this->di->get("response");
 
-        $response->redirect("user/login");
-        return true;
+        return $response->redirect("user/login");
     }
 }

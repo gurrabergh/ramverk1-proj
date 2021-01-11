@@ -23,7 +23,7 @@ class UserController implements ContainerInjectableInterface
 
     public function allActionGet() : object
     {
-        $title = "Start";
+        $title = "Användare";
         $useranagerM = new UserData();
         $useranagerM->di = $this->di;
         $data = array();

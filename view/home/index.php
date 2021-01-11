@@ -20,7 +20,7 @@ namespace Anax\View;
             </li>
 <?php } ?>
 </ul>
-<h2>Mest aktiva användarna (rep):</h2>
+<h2>Top 3 användare (rep):</h2>
 <ul>
 <?php foreach ($users as $user) { ?>
             <li>

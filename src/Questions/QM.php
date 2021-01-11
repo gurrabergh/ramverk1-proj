@@ -37,6 +37,7 @@ class QM
         $textFilter = new TextFilter();
 
         $res->content = $textFilter->parse($res->content, ["markdown"]);
+        $res->tags = explode(" ", $res->tags);
 
 
         return $res;
