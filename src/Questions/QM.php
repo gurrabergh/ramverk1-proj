@@ -59,13 +59,14 @@ class QM
         $db->connect()
         ->insert("answers", ["question", "author", "content"])
         ->execute([$id, $auth, $content]);
+        $last = $db->lastInsertId();
 
         $sql = "UPDATE questions SET answers = answers + 1 WHERE id = ?;";
         $db = $this->di->get("dbqb");
         $db->connect();
-        $db->executeFetch($sql, [$id]);
+        $db->execute($sql, [$id]);
 
-        return $db->lastInsertId();
+        return $last;
     }
 
     
