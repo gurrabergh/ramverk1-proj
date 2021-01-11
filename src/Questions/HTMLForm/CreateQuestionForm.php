@@ -63,7 +63,7 @@ class CreateQuestionForm extends FormModel
         $epost = $session->get("user");
         $db->connect();
         $author = $db->select("nick")
-                ->from("Users")
+                ->from("users")
                 ->where("email = ?")
                 ->execute([$epost])
                 ->fetch();
