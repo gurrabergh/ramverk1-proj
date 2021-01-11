@@ -22,3 +22,6 @@ ratings:
 exclude_paths:
     - "test/**"
     - "vendor/**"
+    - "src/Page"
+    - "src/Navigation"
+    - "src/StyleChooser"
