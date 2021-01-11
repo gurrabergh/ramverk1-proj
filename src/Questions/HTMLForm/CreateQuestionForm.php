@@ -85,5 +85,6 @@ class CreateQuestionForm extends FormModel
         $response = $this->di->get("response");
 
         $response->redirect("questions");
+        return true;
     }
 }
