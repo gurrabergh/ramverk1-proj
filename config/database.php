@@ -13,7 +13,7 @@
  *  "dsn" => "sqlite:$path",
  *
  */
-
+$psw = file_get_contents("../data/DB_PSW");
 $name = $_SESSION["test"] ?? "";
 
 if ($name === "test") {
@@ -41,7 +41,7 @@ if (isset($_SERVER["SERVER_NAME"]) && $_SERVER["SERVER_NAME"] === "www.student.b
     return [
         "dsn"             => "mysql:host=blu-ray.student.bth.se;dbname=gubg19;",
         "username"        => "gubg19",
-        "password"        =>  "",
+        "password"        =>  "$psw",
         "driver_options"  => [
             \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"
         ],

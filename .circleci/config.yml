@@ -35,7 +35,10 @@ jobs:
             - run: make check
             - run: make test
             - store_artifacts:
-                path:  build/coverage-report
+                path:  build/coverage
+- store_test_results:
+    path: test-results
+
 
 
 

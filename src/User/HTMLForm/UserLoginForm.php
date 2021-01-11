@@ -59,7 +59,7 @@ class UserLoginForm extends FormModel
         $db = $this->di->get("dbqb");
         $db->connect();
         $user = $db->select("*")
-                ->from("Users")
+                ->from("users")
                 ->where("email = ?")
                 ->execute([$acronym])
                 ->fetch();
