@@ -28,9 +28,9 @@ CREATE TABLE `answers` (
   `author` varchar(45) NOT NULL,
   `rating` int NOT NULL DEFAULT '0',
   `accepted` int NOT NULL DEFAULT '0',
+  `email` varchar(100) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `question` int NOT NULL,
-  `email` VARCHAR(100) NOT NULL
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -48,9 +48,9 @@ CREATE TABLE `comments` (
   `answer` int NOT NULL,
   `author` varchar(45) NOT NULL,
   `content` text NOT NULL,
+  `email` varchar(100) NOT NULL,
   `rating` int NOT NULL DEFAULT '0',
   `question` int NOT NULL,
-  `email` VARCHAR(100) NOT NULL
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -67,11 +67,11 @@ CREATE TABLE `questions` (
   `title` varchar(450) NOT NULL,
   `content` text NOT NULL,
   `author` varchar(45) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `rating` varchar(45) NOT NULL DEFAULT '0',
   `tags` text,
   `answers` int NOT NULL DEFAULT '0',
   `solved` int NOT NULL DEFAULT '0',
-  `email` VARCHAR(100) NOT NULL
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
