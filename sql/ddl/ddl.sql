@@ -30,6 +30,7 @@ CREATE TABLE `answers` (
   `accepted` int NOT NULL DEFAULT '0',
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `question` int NOT NULL,
+  `email` VARCHAR(100) NOT NULL
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -49,6 +50,7 @@ CREATE TABLE `comments` (
   `content` text NOT NULL,
   `rating` int NOT NULL DEFAULT '0',
   `question` int NOT NULL,
+  `email` VARCHAR(100) NOT NULL
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -69,6 +71,7 @@ CREATE TABLE `questions` (
   `tags` text,
   `answers` int NOT NULL DEFAULT '0',
   `solved` int NOT NULL DEFAULT '0',
+  `email` VARCHAR(100) NOT NULL
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;

@@ -8,48 +8,10 @@ use Anax\Questions\HTMLForm\CreateQuestionForm;
 use Anax\Questions\QM;
 use Anax\User\UserData;
 
-// use Anax\Route\Exception\ForbiddenException;
-// use Anax\Route\Exception\NotFoundException;
-// use Anax\Route\Exception\InternalErrorException;
-
-/**
- * A sample controller to show how a controller class can be implemented.
- * The controller will be injected with $app if implementing the interface
- * AppInjectableInterface, like this sample class does.
- * The controller is mounted on a particular route and can then handle all
- * requests for that mount point.
- *
- * @SuppressWarnings(PHPMD.TooManyPublicMethods)
- */
 class QuestionsController implements ContainerInjectableInterface
 {
     use ContainerInjectableTrait;
 
-    // /**
-    //  * This is the index method action, it handles:
-    //  * ANY METHOD mountpoint
-    //  * ANY METHOD mountpoint/
-    //  * ANY METHOD mountpoint/index
-    //  *
-    //  * @return string
-    //  */
-    // public function initAction() : object
-    // {
-    //     // init session for game start
-
-    //     $this->app->session->set("game", new DiceGame());
-
-    //     return $this->app->response->redirect("diceC/play");
-    // }
-
-    // /**
-    //  * This is the index method action, it handles:
-    //  * ANY METHOD mountpoint
-    //  * ANY METHOD mountpoint/
-    //  * ANY METHOD mountpoint/index
-    //  *
-    //  * @return string
-    //  */
     public function indexAction() : object
     {
         $title = "Frågor";
@@ -142,6 +104,7 @@ class QuestionsController implements ContainerInjectableInterface
         $response = $this->di->get("response");
         $session = $this->di->get("session");
         $user = $session->get("nick");
+        $email = $session->get("user");
         if (empty($user)) {
             return $response->redirect("user/login");
         }
@@ -154,7 +117,7 @@ class QuestionsController implements ContainerInjectableInterface
         $id = $request->getPost("id");
         $content = $request->getPost("content");
 
-        $last = $questionManager->answer($id, $user, $content);
+        $last = $questionManager->answer($id, $user, $content, $email);
         $userData->changeRep(1, $user);
 
         return $response->redirect("questions/view?question={$id}#a{$last}");
@@ -165,6 +128,7 @@ class QuestionsController implements ContainerInjectableInterface
         $response = $this->di->get("response");
         $session = $this->di->get("session");
         $user = $session->get("nick");
+        $email = $session->get("user");
         if (empty($user)) {
             return $response->redirect("user/login");
         }
@@ -178,11 +142,10 @@ class QuestionsController implements ContainerInjectableInterface
         $question = $request->getPost("question");
         $content = $request->getPost("content");
 
-        $last = $questionManager->comment($id, $user, $content, $question);
+        $last = $questionManager->comment($id, $user, $content, $question, $email);
         $userData->changeRep(1, $user);
 
         return $response->redirect("questions/view?question={$question}#c{$last}");
-        
     }
 
     public function acceptActionPost() : object
@@ -203,6 +166,5 @@ class QuestionsController implements ContainerInjectableInterface
         $questionManager->acceptAnswer($id, $question);
 
         return $response->redirect("questions/view?question={$question}#a{$id}");
-        
     }
 }

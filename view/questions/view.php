@@ -12,7 +12,7 @@ if ($question->solved == 1) :
         $acceptBtn = "disabled";
 endif;
 ?>
-<h1>Frågan ställd utav: <strong><a href="<?= url("user/view?user=")?><?= $question->author ?>"><?= $question->author ?></a></strong></h1>
+<h1>Frågan ställd utav: <strong><a href="<?= url("user/view?user=")?><?= $question->author ?>"><?= $question->author ?><img src="https://www.gravatar.com/avatar/<?= md5($question->email) ?>?d=robohash&s=40" alt="robot"></a></strong></h1>
 <ul>
 <h2><?= $question->title ?><strong style="float: right;">
     <form method="post" action="<?= url("questions/vote") ?>"><button type="submit" value="up" name="action" <?= $vote ?>>&uarr;</button>
@@ -70,7 +70,7 @@ endif; ?>
         $accepted = "";
     endif; ?>
     <li>
-        <h3 id="a<?= $answer->id ?>"><?= $accepted ?>Skrivet av: <a href="<?= url("user/view?user=")?><?= $answer->author ?>"><?= $answer->author ?></a>, <small><i><?= $answer->date ?></i></small>
+        <h3 id="a<?= $answer->id ?>"><?= $accepted ?>Skrivet av: <a href="<?= url("user/view?user=")?><?= $answer->author ?>"><?= $answer->author ?><img src="https://www.gravatar.com/avatar/<?= md5($question->email) ?>?d=robohash&s=40" alt="robot"></a></a>, <small><i><?= $answer->date ?></i></small>
         <small style="float: right;">
         <form method="post" action="<?= url("questions/vote") ?>"><button type="submit" value="up" name="action" <?= $voteA ?>>&uarr;</button>
         <input type="hidden" value="<?= $answer->id ?>" name="id">
@@ -94,7 +94,7 @@ endif; ?>
                 $voteC = "";
             endif; ?>
             <li>
-            <h4 id="c<?= $comment->id ?>">Kommentar av: <a href="user/view?user=<?= $comment->author ?>" ><?= $comment->author ?></a>
+            <h4 id="c<?= $comment->id ?>">Kommentar av: <a href="<?= url("user/view?user=")?><?= $comment->author ?>" ><?= $comment->author ?><img src="https://www.gravatar.com/avatar/<?= md5($question->email) ?>?d=robohash&s=40" alt="robot"></a></a>
             <small style="float: right;">
             <form method="post" action="<?= url("questions/vote") ?>"><button type="submit" value="up" name="action" <?= $voteC ?>>&uarr;</button>
             <input type="hidden" value="<?= $comment->id ?>" name="id">

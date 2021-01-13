@@ -53,12 +53,12 @@ class QM
         return;
     }
 
-    public function answer($id, $auth, $content)
+    public function answer($id, $auth, $content, $email)
     {
         $db = $this->di->get("dbqb");
         $db->connect()
-        ->insert("answers", ["question", "author", "content"])
-        ->execute([$id, $auth, $content]);
+        ->insert("answers", ["question", "author", "content", "email"])
+        ->execute([$id, $auth, $content, $email]);
         $last = $db->lastInsertId();
 
         $sql = "UPDATE questions SET answers = answers + 1 WHERE id = ?;";
@@ -70,12 +70,12 @@ class QM
     }
 
     
-    public function comment($id, $auth, $content, $question)
+    public function comment($id, $auth, $content, $question, $email)
     {
         $db = $this->di->get("dbqb");
         $db->connect()
-        ->insert("comments", ["answer", "author", "content", "question"])
-        ->execute([$id, $auth, $content, $question]);
+        ->insert("comments", ["answer", "author", "content", "question", "email"])
+        ->execute([$id, $auth, $content, $question, $email]);
 
         return $db->lastInsertId();
     }

@@ -62,19 +62,15 @@ class CreateQuestionForm extends FormModel
         $session = $this->di->get("session");
         $epost = $session->get("user");
         $db->connect();
-        $author = $db->select("nick")
-                ->from("users")
-                ->where("email = ?")
-                ->execute([$epost])
-                ->fetch();
+        $author = $session->get("nick");
         $db->connect()
-        ->insert("questions", ["title", "content", "author", "tags"])
-        ->execute([$title, $content, $author->nick, $tag]);
+        ->insert("questions", ["title", "content", "author", "tags", "email"])
+        ->execute([$title, $content, $author, $tag, $epost]);
         $qID = $db->lastInsertId();
 
         $userData = new UserData();
         $userData->di = $this->di;
-        $userData->changeRep(1, $author->nick);
+        $userData->changeRep(1, $author);
 
         foreach ($tags as $tag) {
             $db->connect()
@@ -84,6 +80,6 @@ class CreateQuestionForm extends FormModel
 
         $response = $this->di->get("response");
 
-        return $response->redirect("questions");
+        return $response->redirect("questions/view?question={$qID}");
     }
 }
